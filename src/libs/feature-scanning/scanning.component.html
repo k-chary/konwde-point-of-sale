@@ -1,0 +1,22 @@
+<ng-container *ngIf="notification$ | async as notification">
+  <div [ngSwitch]="notification.type">
+    <div
+      *ngSwitchCase="'PRODUCT'"
+      class="notification is-info is-light error-notification"
+    >
+      {{ notification.data.name }} - {{ notification.data.price | currency }}
+    </div>
+    <div
+      *ngSwitchCase="'ERROR'"
+      class="notification is-danger is-light error-notification"
+    >
+      Product was not recognized.
+    </div>
+    <div
+      *ngSwitchCase="'COMPLETE'"
+      class="notification is-success is-light error-notification"
+    >
+      Scanning complete
+    </div>
+  </div>
+</ng-container>
